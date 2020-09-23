@@ -1,0 +1,38 @@
+<wicket:extend>
+    <div class="container">
+        <div class="py-5 text-center">
+            <h2>Ковертер валют</h2>
+        </div>
+
+            <div class="py-5 text-center">
+                <form class="needs-validation" novalidate>
+                    <div class="row">
+                        <div class="col-3">
+                            <label for="fromAmount">Пересчитать</label>
+                            <input type="email" class="form-control" id="fromAmount" aria-describedby="emailHelp">
+                        </div>
+                        <div class="col-2">
+                            <label for="fromCurrency">Валюта</label>
+                            <select id="fromCurrency" class="form-control">
+                                <option selected>Choose...</option>
+                                <option>...</option>
+                            </select>
+                        </div>
+                        <div class="col-1">
+                            <h2>=</h2>
+                        </div>
+                        <div class="col-2">
+                            <label for="toCurrency">Валюта</label>
+                            <select id="toCurrency" class="form-control">
+                                <option selected>Choose...</option>
+                                <option>...</option>
+                            </select>
+                        </div>
+                        <div class="col-2">
+                            <button type="submit" class="btn btn-primary align-bottom">Конвертировать</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+    </div>
+</wicket:extend>
