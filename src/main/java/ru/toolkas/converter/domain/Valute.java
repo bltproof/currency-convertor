@@ -3,11 +3,14 @@ package ru.toolkas.converter.domain;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @Entity
-public class Valute {
+public class Valute implements Serializable {
+    private static final long serialVersionUID = 4086551580583223810L;
+
     @Id
     @GeneratedValue
     private Long id;

@@ -31,8 +31,8 @@ public class CurrencyConversionService {
         ValCursDto valCurs = cbService.fetchValutes();
         LocalDate published = LocalDate.parse(valCurs.date, DateTimeFormatter.ofPattern("dd.MM.yyyy"));
 
-        for(ValuteDto valuteDto: valCurs.valutes) {
-            if(valuteRepository.findByCharCodeAndPublished(valuteDto.charCode, LocalDate.now()).isEmpty()) {
+        for (ValuteDto valuteDto : valCurs.valutes) {
+            if (valuteRepository.findByCharCodeAndPublished(valuteDto.charCode, LocalDate.now()).isEmpty()) {
                 Valute valute = new Valute();
                 valute.setCbId(valuteDto.id);
                 valute.setCharCode(valuteDto.charCode);
@@ -48,14 +48,13 @@ public class CurrencyConversionService {
         }
     }
 
-    public BigDecimal convert(String fromCode, BigDecimal fromAmount, String toCode) {
-        Optional<Valute> fromOpt = valuteRepository.findByCharCode(fromCode);
-        Optional<Valute> toOpt = valuteRepository.findByCharCode(toCode);
-
-        Valute from = fromOpt.orElseThrow();
-        Valute to = toOpt.orElseThrow();
-
-        return fromAmount.multiply(from.getValue()).multiply(BigDecimal.valueOf(from.getNominal())).divide(to.getValue().multiply(BigDecimal.valueOf(to.getNominal())), MathContext.DECIMAL128);
+    public BigDecimal convert(Valute from, BigDecimal fromAmount, Valute to) {
+        return fromAmount
+                .multiply(from.getValue())
+                .multiply(BigDecimal.valueOf(from.getNominal()))
+                .divide(to.getValue().multiply(BigDecimal.valueOf(to.getNominal())),
+                        MathContext.DECIMAL128
+                );
     }
 
     public List<Valute> getTodayValutes() throws IOException, JAXBException {

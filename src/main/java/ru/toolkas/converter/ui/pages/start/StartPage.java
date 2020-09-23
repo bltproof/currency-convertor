@@ -1,16 +1,17 @@
 package ru.toolkas.converter.ui.pages.start;
 
-import org.apache.wicket.markup.html.form.ChoiceRenderer;
-import org.apache.wicket.markup.html.form.DropDownChoice;
-import org.apache.wicket.markup.html.form.IChoiceRenderer;
-import org.apache.wicket.model.IModel;
+import org.apache.wicket.markup.html.basic.Label;
+import org.apache.wicket.markup.html.form.*;
+import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 import ru.toolkas.converter.domain.Valute;
 import ru.toolkas.converter.service.CurrencyConversionService;
 import ru.toolkas.converter.ui.pages.BasePage;
+import ru.toolkas.converter.ui.util.ValuteRenderer;
 
 import javax.xml.bind.JAXBException;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -20,43 +21,34 @@ public class StartPage extends BasePage {
     private CurrencyConversionService currencyConversionService;
 
     public StartPage() throws IOException, JAXBException {
-        List<Valute> valutes = new ArrayList<>(currencyConversionService.getTodayValutes());
-        valutes.sort(Comparator.comparing(Valute::getCharCode));
+        add(new ConverterForm("converter-form"));
+    }
 
-        DropDownChoice<Valute> fromCurrency = new DropDownChoice<>("fromCurrency", valutes, new IChoiceRenderer<Valute>() {
-            @Override
-            public Object getDisplayValue(Valute valute) {
-                return valute.getCharCode();
-            }
+    private class ConverterForm extends Form<Void> {
+        private BigDecimal fromAmount;
+        private Valute from;
+        private Valute to;
+        private String result;
 
-            @Override
-            public String getIdValue(Valute valute, int i) {
-                return valute.getCbId();
-            }
+        public ConverterForm(String id) throws IOException, JAXBException {
+            super(id);
 
-            @Override
-            public Valute getObject(String id, IModel<? extends List<? extends Valute>> model) {
-                return model.getObject().stream().filter(v -> v.getCbId().equals(id)).findAny().orElseThrow();
-            }
-        });
-        add(fromCurrency);
+            List<Valute> valutes = new ArrayList<>(currencyConversionService.getTodayValutes());
+            valutes.sort(Comparator.comparing(Valute::getCharCode));
 
-        DropDownChoice<Valute> toCurrency = new DropDownChoice<>("toCurrency", valutes, new IChoiceRenderer<Valute>() {
-            @Override
-            public Object getDisplayValue(Valute valute) {
-                return valute.getCharCode();
-            }
+            add(new DropDownChoice<>("fromCurrency", new PropertyModel<Valute>(this, "from"), valutes, new ValuteRenderer()));
+            add(new DropDownChoice<>("toCurrency", new PropertyModel<Valute>(this, "to"), valutes, new ValuteRenderer()));
+            add(new NumberTextField<BigDecimal>("fromAmount", new PropertyModel<>(this, "fromAmount")));
 
-            @Override
-            public String getIdValue(Valute valute, int i) {
-                return valute.getCbId();
-            }
+            add(new Label("result", new PropertyModel<>(this, "result")));
+        }
 
-            @Override
-            public Valute getObject(String id, IModel<? extends List<? extends Valute>> model) {
-                return model.getObject().stream().filter(v -> v.getCbId().equals(id)).findAny().orElseThrow();
-            }
-        });
-        add(toCurrency);
+        @Override
+        protected void onSubmit() {
+            super.onSubmit();
+
+            BigDecimal value = currencyConversionService.convert(from, fromAmount, to);
+            result = fromAmount + " " + from.getCharCode() + " = " + value + " " + to.getCharCode();
+        }
     }
 }

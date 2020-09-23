@@ -5,11 +5,11 @@
         </div>
 
             <div class="py-5 text-center">
-                <form class="needs-validation" novalidate>
+                <form wicket:id="converter-form" class="needs-validation" novalidate>
                     <div class="row">
                         <div class="col-3">
                             <label for="fromAmount">Пересчитать</label>
-                            <input type="email" class="form-control" id="fromAmount" aria-describedby="emailHelp">
+                            <input type="number" class="form-control" wicket:id="fromAmount" id="fromAmount">
                         </div>
                         <div class="col-2">
                             <label for="fromCurrency">Валюта</label>
@@ -26,6 +26,11 @@
                         </div>
                         <div class="col-2">
                             <button type="submit" class="btn btn-primary align-bottom">Конвертировать</button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <label wicket:id="result"></label>
                         </div>
                     </div>
                 </form>
