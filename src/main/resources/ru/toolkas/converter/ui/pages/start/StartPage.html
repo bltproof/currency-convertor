@@ -1,39 +1,37 @@
 <wicket:extend>
-    <div class="container">
-        <div class="py-5 text-center">
-            <h2>Ковертер валют</h2>
+    <div class="container py-3 my-3 border border-primary rounded bg-light">
+        <div class="text-center">
+            <form wicket:id="converter-form" class="needs-validation">
+                <div class="row">
+                    <div class="col-3 ml-0">
+                        <label class="h3 ml-0">Конвертер валют</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-3 pr-0">
+                        <input type="number" class="form-control" wicket:id="fromAmount" id="fromAmount" required>
+                    </div>
+                    <div class="col-2 pl-0">
+                        <select wicket:id="fromCurrency" id="fromCurrency" class="form-control" required>
+                        </select>
+                    </div>
+                    <div class="col-1">
+                        <h2>=</h2>
+                    </div>
+                    <div class="col-2">
+                        <select wicket:id="toCurrency" id="toCurrency" class="form-control" required>
+                        </select>
+                    </div>
+                    <div class="col-2">
+                        <button type="submit" class="btn btn-primary align-bottom">Конвертировать</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-3 ml-0">
+                        <label class="h3 ml-0" wicket:id="result"></label>
+                    </div>
+                </div>
+            </form>
         </div>
-
-            <div class="py-5 text-center">
-                <form wicket:id="converter-form" class="needs-validation" novalidate>
-                    <div class="row">
-                        <div class="col-3">
-                            <label for="fromAmount">Пересчитать</label>
-                            <input type="number" class="form-control" wicket:id="fromAmount" id="fromAmount">
-                        </div>
-                        <div class="col-2">
-                            <label for="fromCurrency">Валюта</label>
-                            <select wicket:id="fromCurrency" id="fromCurrency" class="form-control">
-                            </select>
-                        </div>
-                        <div class="col-1">
-                            <h2>=</h2>
-                        </div>
-                        <div class="col-2">
-                            <label for="toCurrency">Валюта</label>
-                            <select wicket:id="toCurrency" id="toCurrency" class="form-control">
-                            </select>
-                        </div>
-                        <div class="col-2">
-                            <button type="submit" class="btn btn-primary align-bottom">Конвертировать</button>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            <label wicket:id="result"></label>
-                        </div>
-                    </div>
-                </form>
-            </div>
     </div>
 </wicket:extend>

@@ -12,6 +12,7 @@ import ru.toolkas.converter.ui.util.ValuteRenderer;
 import javax.xml.bind.JAXBException;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -47,8 +48,8 @@ public class StartPage extends BasePage {
         protected void onSubmit() {
             super.onSubmit();
 
-            BigDecimal value = currencyConversionService.convert(from, fromAmount, to);
-            result = fromAmount + " " + from.getCharCode() + " = " + value + " " + to.getCharCode();
+            BigDecimal toAmount = currencyConversionService.convert(from, fromAmount, to);
+            result = new DecimalFormat("##").format(fromAmount) + " " + from.getCharCode() + " = " + new DecimalFormat("##.0000").format(toAmount) + " " + to.getCharCode();
         }
     }
 }

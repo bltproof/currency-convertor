@@ -51,8 +51,8 @@ public class CurrencyConversionService {
     public BigDecimal convert(Valute from, BigDecimal fromAmount, Valute to) {
         return fromAmount
                 .multiply(from.getValue())
-                .multiply(BigDecimal.valueOf(from.getNominal()))
-                .divide(to.getValue().multiply(BigDecimal.valueOf(to.getNominal())),
+                .multiply(BigDecimal.valueOf(to.getNominal()))
+                .divide(to.getValue().multiply(BigDecimal.valueOf(from.getNominal())),
                         MathContext.DECIMAL128
                 );
     }
