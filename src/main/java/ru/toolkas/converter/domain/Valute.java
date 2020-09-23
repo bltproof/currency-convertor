@@ -1,5 +1,6 @@
 package ru.toolkas.converter.domain;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -15,10 +16,15 @@ public class Valute implements Serializable {
     @GeneratedValue
     private Long id;
 
+    @Column(nullable = false)
     private String name;
+    @Column(nullable = false)
     private String charCode;
+    @Column(nullable = false)
     private int numCode;
+    @Column(nullable = false)
     private int nominal;
+    @Column(nullable = false)
     private BigDecimal value;
 
     private String cbId;
