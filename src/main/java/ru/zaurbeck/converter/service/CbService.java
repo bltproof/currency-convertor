@@ -1,9 +1,9 @@
-package ru.toolkas.converter.service;
+package ru.zaurbeck.converter.service;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Service;
-import ru.toolkas.converter.service.model.ValCursDto;
+import ru.zaurbeck.converter.service.model.ValCursDto;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;

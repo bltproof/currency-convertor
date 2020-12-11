@@ -1,7 +1,7 @@
-package ru.toolkas.converter.repository;
+package ru.zaurbeck.converter.repository;
 
 import org.springframework.data.repository.CrudRepository;
-import ru.toolkas.converter.domain.Valute;
+import ru.zaurbeck.converter.domain.Valute;
 
 import java.time.LocalDate;
 import java.util.List;

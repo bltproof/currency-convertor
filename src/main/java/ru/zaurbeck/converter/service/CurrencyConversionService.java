@@ -1,14 +1,14 @@
-package ru.toolkas.converter.service;
+package ru.zaurbeck.converter.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import ru.toolkas.converter.domain.History;
-import ru.toolkas.converter.domain.Valute;
-import ru.toolkas.converter.repository.HistoryRepository;
-import ru.toolkas.converter.repository.ValuteRepository;
-import ru.toolkas.converter.service.model.ValCursDto;
-import ru.toolkas.converter.service.model.ValuteDto;
+import ru.zaurbeck.converter.domain.History;
+import ru.zaurbeck.converter.domain.Valute;
+import ru.zaurbeck.converter.repository.HistoryRepository;
+import ru.zaurbeck.converter.repository.ValuteRepository;
+import ru.zaurbeck.converter.service.model.ValCursDto;
+import ru.zaurbeck.converter.service.model.ValuteDto;
 
 import javax.annotation.PostConstruct;
 import javax.xml.bind.JAXBException;

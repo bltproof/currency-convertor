@@ -1,4 +1,4 @@
-package ru.toolkas.converter.ui.pages.start;
+package ru.zaurbeck.converter.ui.pages.start;
 
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.*;
@@ -7,12 +7,12 @@ import org.apache.wicket.markup.repeater.RepeatingView;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
-import ru.toolkas.converter.domain.History;
-import ru.toolkas.converter.domain.Valute;
-import ru.toolkas.converter.repository.HistoryRepository;
-import ru.toolkas.converter.service.CurrencyConversionService;
-import ru.toolkas.converter.ui.pages.BasePage;
-import ru.toolkas.converter.ui.util.ValuteRenderer;
+import ru.zaurbeck.converter.domain.History;
+import ru.zaurbeck.converter.domain.Valute;
+import ru.zaurbeck.converter.repository.HistoryRepository;
+import ru.zaurbeck.converter.service.CurrencyConversionService;
+import ru.zaurbeck.converter.ui.pages.BasePage;
+import ru.zaurbeck.converter.ui.util.ValuteRenderer;
 
 import javax.xml.bind.JAXBException;
 import java.io.IOException;

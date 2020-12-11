@@ -1,4 +1,4 @@
-package ru.toolkas.converter.service.model;
+package ru.zaurbeck.converter.service.model;
 
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;

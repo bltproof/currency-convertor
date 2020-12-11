@@ -1,4 +1,4 @@
-package ru.toolkas.converter.domain;
+package ru.zaurbeck.converter.domain;
 
 import javax.persistence.*;
 import java.math.BigDecimal;

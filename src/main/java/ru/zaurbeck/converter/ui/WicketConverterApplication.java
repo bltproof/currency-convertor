@@ -1,9 +1,9 @@
-package ru.toolkas.converter.ui;
+package ru.zaurbeck.converter.ui;
 
 import org.apache.wicket.Page;
 import org.apache.wicket.protocol.http.WebApplication;
 import org.apache.wicket.spring.injection.annot.SpringComponentInjector;
-import ru.toolkas.converter.ui.pages.start.StartPage;
+import ru.zaurbeck.converter.ui.pages.start.StartPage;
 
 public class WicketConverterApplication extends WebApplication {
     @Override

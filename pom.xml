@@ -8,7 +8,7 @@
         <version>2.3.4.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>ru.toolkas</groupId>
+    <groupId>ru.zaurbeck</groupId>
     <artifactId>currency-converter</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>currency-converter</name>

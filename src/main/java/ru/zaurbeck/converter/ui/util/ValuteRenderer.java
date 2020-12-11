@@ -1,8 +1,8 @@
-package ru.toolkas.converter.ui.util;
+package ru.zaurbeck.converter.ui.util;
 
 import org.apache.wicket.markup.html.form.IChoiceRenderer;
 import org.apache.wicket.model.IModel;
-import ru.toolkas.converter.domain.Valute;
+import ru.zaurbeck.converter.domain.Valute;
 
 import java.util.List;
 
